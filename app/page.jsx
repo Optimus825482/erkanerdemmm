@@ -568,6 +568,12 @@ function ProjectsPage({ projects: dbProjects }) {
             </button>
           ))}
         </div>
+        {list.length === 0 ? (
+          <div className="empty-state">
+            <span className="empty-icon">▢</span>
+            <p>Henüz bu kategoride proje yok.</p>
+          </div>
+        ) : (
         <motion.div className="proj-grid" layout>
           <AnimatePresence>
             {list.map((p, i) => (
@@ -585,6 +591,7 @@ function ProjectsPage({ projects: dbProjects }) {
             ))}
           </AnimatePresence>
         </motion.div>
+        )}
       </section>
     </>
   );
@@ -636,6 +643,13 @@ function WritingsPage({ posts: dbPosts }) {
           ))}
         </div>
 
+        {!featured && list.length === 0 && (
+          <div className="empty-state">
+            <span className="empty-icon">☰</span>
+            <p>Henüz yazı eklenmemiş.</p>
+          </div>
+        )}
+        {(featured || list.length > 0) && (
         <div className="post-list">
           <AnimatePresence>
             {list.map((p, i) => (
@@ -645,6 +659,7 @@ function WritingsPage({ posts: dbPosts }) {
             ))}
           </AnimatePresence>
         </div>
+        )}
       </section>
     </>
   );
@@ -1233,6 +1248,11 @@ section{padding:clamp(48px,7vw,96px) 0}
 .fv-typing{color:var(--cyan);animation:blink 0.8s steps(1) infinite}
 .fv-dots{color:var(--cyan)}
 .footer-bottom{border-top:1px solid rgba(139,148,187,.15);padding:18px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--font-m);font-size:.72rem;letter-spacing:2px;color:var(--muted)}
+
+/* EMPTY STATE */
+.empty-state{display:flex;flex-direction:column;align-items:center;gap:14px;padding:56px 24px;border:1px solid var(--line);background:rgba(10,15,34,.4);text-align:center}
+.empty-state .empty-icon{font-size:2.4rem;color:var(--line);opacity:.6}
+.empty-state p{font-family:var(--font-b);color:var(--muted);font-size:1rem;font-weight:500}
 `;
 
 /* ------------------------------------------------------------------ */
