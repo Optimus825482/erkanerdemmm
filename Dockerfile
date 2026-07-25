@@ -1,17 +1,17 @@
 # syntax=docker/dockerfile:1
 
 # ── Build Stage ──
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 RUN apk add --no-cache python3 make g++
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install --production=false
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # ── Production Stage ──
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 RUN apk add --no-cache python3 make g++
 WORKDIR /app
 RUN mkdir -p /app/data

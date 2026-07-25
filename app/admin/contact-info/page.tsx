@@ -28,7 +28,7 @@ export default function ContactInfoAdmin() {
         setForm({ ...form, socials });
     };
 
-    const addSocial = () => { if (form) setForm({ ...form, socials: [...form.socials, { name: "", handle: "" }] }); };
+    const addSocial = () => { if (form) setForm({ ...form, socials: [...form.socials, { name: "", handle: "", url: "" }] }); };
     const removeSocial = (i: number) => { if (form) setForm({ ...form, socials: form.socials.filter((_, idx) => idx !== i) }); };
 
     if (!form) return <div style={{ color: "#8b94bb" }}>Yükleniyor...</div>;
