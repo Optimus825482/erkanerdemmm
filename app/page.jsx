@@ -276,7 +276,7 @@ function HomePage({ navigate, projects, posts }) {
               <span className="caret" />
             </div>
             <motion.p className="hero-desc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-              Veteriner hekimlik mesleğimi teknoloji ile birleştirerek, iki farklı dünyayı aynı çatı altında buluşturuyorum. Modern web teknolojileri ve yapay zeka ile yenilikçi dijital çözümler üretiyorum.
+              2005 yılında Excel formülleri ve VBA makroları ile başlayan yazılım merakım, bugün modern web teknolojileri ve yapay zeka ile profesyonel uygulamalar geliştirmeye evrildi. 17+ yıllık bu yolculukta her adım bir önceki adımın üzerine inşa edildi.
             </motion.p>
             <motion.div className="hero-cta" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}>
               <button className="btn solid" onClick={() => navigate("projects")}>
