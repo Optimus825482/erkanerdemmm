@@ -10,6 +10,7 @@ export default function PostsAdmin() {
     const [form, setForm] = useState<Omit<Post, "id">>(empty);
     const [editId, setEditId] = useState<number | null>(null);
     const [tagInput, setTagInput] = useState("");
+    const [isAdding, setIsAdding] = useState(false);
 
     const load = () => fetch("/api/posts").then((r) => r.json()).then(setList);
     useEffect(() => { load(); }, []);
@@ -20,7 +21,7 @@ export default function PostsAdmin() {
         setTagInput(JSON.parse(p.tags || "[]").join(", "));
     };
 
-    const openNew = () => { setEditId(null); setForm(empty); setTagInput(""); };
+    const openNew = () => { setEditId(null); setIsAdding(true); setForm(empty); setTagInput(""); };
 
     const save = async () => {
         const tags = tagInput.split(",").map((t) => t.trim()).filter(Boolean);
@@ -30,7 +31,7 @@ export default function PostsAdmin() {
         } else {
             await fetch("/api/posts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
         }
-        setEditId(null); setForm(empty); setTagInput(""); load();
+        setEditId(null); setIsAdding(false); setForm(empty); setTagInput(""); load();
     };
 
     const remove = async (id: number) => {
@@ -59,7 +60,7 @@ export default function PostsAdmin() {
                 <button onClick={openNew} style={{ background: "#ff2bd6", color: "#1a0313", border: "none", padding: "10px 24px", fontFamily: "'Orbitron', sans-serif", fontSize: "0.75rem", letterSpacing: 2, cursor: "pointer" }}>+ YENİ</button>
             </div>
 
-            {(editId !== null || form.title) && (
+            {(editId !== null || isAdding) && (
                 <div style={{ background: "rgba(10,15,34,.8)", border: "1px solid rgba(255,43,214,.2)", padding: 24, marginBottom: 28 }}>
                     <div style={{ fontFamily: "'Share Tech Mono', monospace", color: "#ff2bd6", fontSize: "0.8rem", letterSpacing: 2, marginBottom: 16 }}>{editId ? "DÜZENLE" : "YENİ YAZI"}</div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
@@ -91,7 +92,7 @@ export default function PostsAdmin() {
                     </div>
                     <div style={{ marginTop: 16, display: "flex", gap: 10 }}>
                         <button onClick={save} style={{ background: "#ff2bd6", color: "#1a0313", border: "none", padding: "10px 28px", fontFamily: "'Orbitron', sans-serif", fontSize: "0.72rem", letterSpacing: 2, cursor: "pointer" }}>KAYDET</button>
-                        <button onClick={() => { setEditId(null); setForm(empty); setTagInput(""); }} style={{ background: "transparent", color: "#8b94bb", border: "1px solid rgba(139,148,187,.3)", padding: "10px 20px", fontFamily: "'Orbitron', sans-serif", fontSize: "0.72rem", letterSpacing: 2, cursor: "pointer" }}>İPTAL</button>
+                        <button onClick={() => { setEditId(null); setIsAdding(false); setForm(empty); setTagInput(""); }} style={{ background: "transparent", color: "#8b94bb", border: "1px solid rgba(139,148,187,.3)", padding: "10px 20px", fontFamily: "'Orbitron', sans-serif", fontSize: "0.72rem", letterSpacing: 2, cursor: "pointer" }}>İPTAL</button>
                     </div>
                 </div>
             )}
