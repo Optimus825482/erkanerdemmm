@@ -711,7 +711,7 @@ function ContactPage({ contactInfo }) {
             </div>
             <div className="socials">
               {socials.map((s) => (
-                <a key={s.name} className="soc" href="#" onClick={(e) => e.preventDefault()}>
+                <a key={s.name} className="soc" href={s.url || "#"} target={s.url ? "_blank" : undefined} rel={s.url ? "noopener noreferrer" : undefined} onClick={!s.url ? (e) => e.preventDefault() : undefined}>
                   <span>{s.name}</span>
                   <span>{s.handle} ↗</span>
                 </a>

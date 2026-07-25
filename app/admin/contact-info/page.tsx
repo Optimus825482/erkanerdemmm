@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-interface Social { name: string; handle: string }
+interface Social { name: string; handle: string; url: string }
 interface ContactData { email: string; location: string; response_time: string; socials: Social[] }
 
 export default function ContactInfoAdmin() {
@@ -65,7 +65,8 @@ export default function ContactInfoAdmin() {
                 {form.socials.map((s, i) => (
                     <div key={i} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "center" }}>
                         <input placeholder="Platform adı" value={s.name} onChange={(e) => updateSocial(i, "name", e.target.value)} style={{ ...inputStyle, flex: 1 }} />
-                        <input placeholder="Kullanıcı adı" value={s.handle} onChange={(e) => updateSocial(i, "handle", e.target.value)} style={{ ...inputStyle, flex: 2 }} />
+                        <input placeholder="Kullanıcı adı" value={s.handle} onChange={(e) => updateSocial(i, "handle", e.target.value)} style={{ ...inputStyle, flex: 1 }} />
+                        <input placeholder="URL (https://...)" value={s.url || ""} onChange={(e) => updateSocial(i, "url", e.target.value)} style={{ ...inputStyle, flex: 2 }} />
                         <button onClick={() => removeSocial(i)} style={{ background: "transparent", color: "#ff5f56", border: "none", cursor: "pointer", fontSize: "1.2rem" }}>×</button>
                     </div>
                 ))}

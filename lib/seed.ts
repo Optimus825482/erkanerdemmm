@@ -236,9 +236,26 @@ export function seedDatabase() {
     "Türkiye",
     "< 24 saat",
     JSON.stringify([
-      { name: "GITHUB", handle: "@erkanerdem" },
-      { name: "LINKEDIN", handle: "/in/erkanerdem" },
-      { name: "X / TWITTER", handle: "@erkanerdem" },
+      {
+        name: "GITHUB",
+        handle: "@erkanerdem",
+        url: "https://github.com/erkanerdem",
+      },
+      {
+        name: "LINKEDIN",
+        handle: "/in/erkanerdem",
+        url: "https://linkedin.com/in/erkanerdem",
+      },
+      {
+        name: "X / TWITTER",
+        handle: "@erkanerdem",
+        url: "https://x.com/erkanerdem",
+      },
+      {
+        name: "YOUTUBE",
+        handle: "@erkanerdem",
+        url: "https://youtube.com/@erkanerdem",
+      },
     ]),
   );
 
