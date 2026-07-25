@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.gitignore
+data.db
+data.db-shm
+data.db-wal
+*.md
+.vscode
+.pnpm-debug.log
+npm-debug.log
+yarn-error.log

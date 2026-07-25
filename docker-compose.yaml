@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    container_name: erkanerdem-portfolio
+    ports:
+      - "3000"
+    volumes:
+      - app_data:/app/data
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
+    networks:
+      - coolify
+
+volumes:
+  app_data:
+
+networks:
+  coolify:
+    external: false
