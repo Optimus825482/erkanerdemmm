@@ -14,7 +14,7 @@ RUN npm run build
 FROM node:22-alpine AS runner
 RUN apk add --no-cache python3 make g++
 WORKDIR /app
-RUN mkdir -p /app/data
+RUN mkdir -p /app/data/uploads
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 

@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   if (!file)
     return NextResponse.json({ error: "Dosya gerekli" }, { status: 400 });
 
-  const uploadDir = path.join(process.cwd(), "public", "uploads");
+  const uploadDir = path.join(process.cwd(), "data", "uploads");
   await mkdir(uploadDir, { recursive: true });
 
   const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
@@ -27,5 +27,5 @@ export async function POST(req: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
   await writeFile(filepath, buffer);
 
-  return NextResponse.json({ url: `/uploads/${filename}` });
+  return NextResponse.json({ url: `/api/upload/${filename}` });
 }
