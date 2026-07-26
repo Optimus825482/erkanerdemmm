@@ -1094,7 +1094,7 @@ section{padding:clamp(48px,7vw,96px) 0}
 .card:hover{transform:translateY(-6px);border-color:rgba(0,240,255,.5);filter:drop-shadow(0 18px 40px rgba(0,0,0,.5)) drop-shadow(0 0 18px rgba(0,240,255,.15))}
 .pcard{display:flex;flex-direction:column}
 .pcard .thumb{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line)}
-.pcard .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease, filter .6s;filter:saturate(.9)}
+.pcard .thumb img{width:100%;height:100%;object-fit:contain;transition:transform .6s ease, filter .6s;filter:saturate(.9)}
 .pcard:hover .thumb img{transform:scale(1.07);filter:saturate(1.25)}
 .pcard .thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(4,6,15,.85))}
 .pcard .scanfx{position:absolute;inset:0;opacity:0;transition:.3s;background:repeating-linear-gradient(0deg,rgba(0,240,255,.06) 0 2px,transparent 2px 6px);z-index:2}
